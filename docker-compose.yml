@@ -1,0 +1,17 @@
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    ports:
+     - "8080:80"
+  db:
+    image: postgres:15
+    container_name: postgres
+    restart: always
+    volumes:
+      - ./postgresql:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: examplepwd
+      POSTGRES_DB: pgdb
+    ports:
+     - "5432:5432"
